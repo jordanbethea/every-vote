@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def hello
     render html: "Come make a vote"
   end
+  
+  def home
+  end
+  
 end
