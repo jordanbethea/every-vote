@@ -1,0 +1,7 @@
+<p>Ballot created by : <%= @ballot.electioneer %></p>
+<p><%= @ballot.name %></p>
+<ol>
+    <% @ballot.selection.each do |t| %>
+        <li><%= t.name %></li>
+    <% end %>
+</ol>
