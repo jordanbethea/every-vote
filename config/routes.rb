@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   
+  get '/createBallot', to: 'ballots#new'
+  get 'ballots/new'
+
   root 'application#home'
   
   get 'application/home'
+  
+  resources :ballots
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

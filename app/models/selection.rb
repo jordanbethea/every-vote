@@ -1,3 +1,3 @@
 class Selection < ActiveRecord::Base
-  belongs_to :Ballot
+  belongs_to :ballot
 end

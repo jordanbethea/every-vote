@@ -1,0 +1,26 @@
+<h1>Create a new Ballot!</h1>
+<p>Add selections to vote on and send this ballot to your friends:</p>
+
+<%= form_for(@ballot) do |ballot| %>
+    <p>
+        <%= ballot.label "Who is making this ballot?" %>
+        <%= ballot.text_field :electioneer %>
+    
+        <%= ballot.label "What are you voting on?" %>
+        <%= ballot.text_field :name %>
+    </p>
+    <div class="selection">
+        <%= ballot.fields_for :selection do |selection_fields| %>
+            <p>
+                <%= selection_fields.label "Write a choice:" %>
+                <%= selection_fields.text_field :name %>
+            </p>
+        <% end %>
+    </div>
+    <p>
+        <%= ballot.submit "Create a new ballot" %>
+    </p>
+    
+    <br/>
+
+<% end %>
