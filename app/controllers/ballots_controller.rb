@@ -1,9 +1,7 @@
 class BallotsController < ApplicationController
   def new
     @ballot = Ballot.new
-    #@ballot.Selection<< Selection.new
-    #@ballot.Selection<< Selection.new
-    #@ballot.Selection<< Selection.new
+
     @ballot.selection.build
     @ballot.selection.build
     @ballot.selection.build
@@ -23,6 +21,9 @@ class BallotsController < ApplicationController
     end
   end
   
+  def index
+    @ballots = Ballot.all
+  end
 
   
   def edit

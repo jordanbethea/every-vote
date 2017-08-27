@@ -2,21 +2,25 @@
 <p>Add selections to vote on and send this ballot to your friends:</p>
 
 <%= form_for(@ballot) do |ballot| %>
-    <%= ballot.label "Who is making this ballot?" %>
-    <%= ballot.text_field :electioneer %>
+    <p>
+        <%= ballot.label "Who is making this ballot?" %>
+        <%= ballot.text_field :electioneer %>
     
-    <%= ballot.label "What are you voting on?" %>
-    <%= ballot.text_field :name %>
-    <br/>
-    <%= ballot.fields_for :selection do |selection_fields| %>
-        <% selection_fields.label "Write a choice:" %>
-        <% selection_fields.text_field :name %>
-    <% end %>
-    <br/>
-    <%= ballot.submit "Create a new ballot" %>
+        <%= ballot.label "What are you voting on?" %>
+        <%= ballot.text_field :name %>
+    </p>
+    <div class="selection">
+        <%= ballot.fields_for :selection do |selection_fields| %>
+            <p>
+                <%= selection_fields.label "Write a choice:" %>
+                <%= selection_fields.text_field :name %>
+            </p>
+        <% end %>
+    </div>
+    <p>
+        <%= ballot.submit "Create a new ballot" %>
+    </p>
     
-    
     <br/>
-    <%= @ballot.selection.class %>
-    <%= debug(@ballot.selection) if Rails.env.development? %>
+
 <% end %>

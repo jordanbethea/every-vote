@@ -1,0 +1,6 @@
+<h1>Current Ballots:</h1>
+<ul>
+    <% @ballots.each do |ballot| %>
+        <li><%= link_to ballot.name, ballot_path(ballot.id) %></li>
+    <% end %>
+</ul>
