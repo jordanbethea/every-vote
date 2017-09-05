@@ -5,3 +5,6 @@
         <li><%= t.name %></li>
     <% end %>
 </ol>
+
+<%= link_to "Vote on this ballot", new_ballot_full_vote_path(@ballot) %>
+<%= link_to "See votes on this ballot", ballot_full_votes_path(@ballot) %>

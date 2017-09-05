@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   
   get 'application/home'
   
-  resources :ballots
+  resources :ballots do
+    resources :full_votes
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

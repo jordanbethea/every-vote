@@ -40,13 +40,12 @@ ActiveRecord::Schema.define(version: 20170730013510) do
   add_index "selections", ["ballot_id"], name: "index_selections_on_ballot_id"
 
   create_table "single_vote_models", force: :cascade do |t|
-    t.integer  "FullVote_id"
-    t.integer  "Selection_id"
+    t.integer  "selection_id"
+    t.integer  "full_vote_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "single_vote_models", ["FullVote_id"], name: "index_single_vote_models_on_FullVote_id"
-  add_index "single_vote_models", ["Selection_id"], name: "index_single_vote_models_on_Selection_id"
+  add_index "single_vote_models", ["full_vote_id"], name: "index_single_vote_models_on_full_vote_id"
 
 end

@@ -1,0 +1,18 @@
+<h1>Vote on this ballot:</h1>
+<p>The question: <%= @ballot.name %></p>
+
+<!--
+<%#= form_for(@singleVote) do |singleVote| >
+<ol>
+    <%# @ballot.selection.each do |t| %>
+        <li><%#= label_tag(:singleVoteChoice, t.name) %><%#= radio_button_tag(</li>
+    <%# end %>
+</ol>
+<%# end %>
+-->
+<%= form_for([@ballot, @vote]) do |vote| %>
+    <%= fields_for(@singleVote) do |singleVote| %>
+        <%= collection_radio_buttons(:single_vote_model, :selection_id, @ballot.selection.all, :id, :name) %>
+    <% end %>
+    <%= vote.submit "Cast Vote" %>
+<% end %>

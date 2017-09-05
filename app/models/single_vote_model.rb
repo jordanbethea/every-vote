@@ -1,4 +1,5 @@
 class SingleVoteModel < ActiveRecord::Base
-  belongs_to :FullVote
-  has_one :Selection
+  belongs_to :full_vote
+  
+  attr_accessor :selection_name
 end

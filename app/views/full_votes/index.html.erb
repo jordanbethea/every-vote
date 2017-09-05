@@ -1,0 +1,13 @@
+<h1>Votes for <%= @ballot.name %></h1>
+<p>Selection Counts:</p>
+<ul>
+    <% @counts.each do |key, value| %>
+        <li><%= key %>:<%= value %></li>
+    <% end %>
+</ul>
+<p>Total votes</p>
+<ul>
+    <% @ballot.full_vote.each do |vote| %>
+        <li><%= vote.single_vote_model.selection_name %></li>
+    <% end %>
+</ul>
