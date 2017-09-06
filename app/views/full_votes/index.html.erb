@@ -1,7 +1,7 @@
 <h1>Votes for <%= @ballot.name %></h1>
-<p>Selection Counts:</p>
+<h3>Single Vote Selection Counts:</h3>
 <ul>
-    <% @counts.each do |key, value| %>
+    <% @singleCounts.each do |key, value| %>
         <li><%= key %>:<%= value %></li>
     <% end %>
 </ul>
@@ -9,5 +9,19 @@
 <ul>
     <% @ballot.full_vote.each do |vote| %>
         <li><%= vote.single_vote_model.selection_name %></li>
+    <% end %>
+</ul>
+
+<h3>Approval Vote Selection Counts:</h3>
+<ul>
+    <% @approvals.each do |key, value| %>
+        <li><%= key %>:<%= value %></li>
+    <% end %>
+</ul>
+<ul>
+    <% @ballot.full_vote.each do |vote| %>
+        <% vote.approval_vote_model.approval_entry.each do |approval_entry| %>
+            <li><%= approval_entry.selection_name %></li>
+        <% end %>
     <% end %>
 </ul>

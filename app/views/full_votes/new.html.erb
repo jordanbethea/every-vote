@@ -10,9 +10,18 @@
 </ol>
 <%# end %>
 -->
+<h2>Single Vote Model (First Past the Post)</h2>
+<p>Choose a single favorite selection:</p>
+
 <%= form_for([@ballot, @vote]) do |vote| %>
     <%= fields_for(@singleVote) do |singleVote| %>
         <%= collection_radio_buttons(:single_vote_model, :selection_id, @ballot.selection.all, :id, :name) %>
+    <% end %>
+
+<h2>Approval Vote Model</h2>
+<p>Choose all selections that you approve of winning</p>    
+    <%= fields_for(@approvalVote) do |approvalVote| %>
+        <%= collection_check_boxes(:approval_vote_model, :selection_id, @ballot.selection.all, :id, :name) %>
     <% end %>
     <%= vote.submit "Cast Vote" %>
 <% end %>

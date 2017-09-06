@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730013510) do
+ActiveRecord::Schema.define(version: 20170905222051) do
+
+  create_table "approval_entries", force: :cascade do |t|
+    t.integer  "selection_id"
+    t.integer  "approval_vote_model_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "approval_entries", ["approval_vote_model_id"], name: "index_approval_entries_on_approval_vote_model_id"
+
+  create_table "approval_vote_models", force: :cascade do |t|
+    t.integer  "full_vote_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "approval_vote_models", ["full_vote_id"], name: "index_approval_vote_models_on_full_vote_id"
 
   create_table "ballots", force: :cascade do |t|
     t.string   "electioneer"
