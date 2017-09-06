@@ -17,7 +17,9 @@ class FullVotesController < ApplicationController
         approvalVotes = params[:approval_vote_model][:selection_id]
         
         approvalVotes.each do |approval|
-           @approvalVote.approval_entry.build(selection_id: approval) 
+            unless approval.nil? || approval == ""
+                @approvalVote.approval_entry.build(selection_id: approval) 
+            end
         end
 
         if(@ballot.save)
@@ -37,7 +39,9 @@ class FullVotesController < ApplicationController
            @singleCounts[vote.single_vote_model.selection_name] += 1
            
            vote.approval_vote_model.approval_entry.each do |approval|
-              approval.selection_name = Selection.find(vote.single_vote_model.selection_id).name
+               if(approval.selection_id.nil?) then approval.selection_name = ""
+               else approval.selection_name = Selection.find(approval.selection_id).name
+               end
               @approvals[approval.selection_name] += 1
            end
         end
