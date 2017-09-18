@@ -18,7 +18,7 @@
         <li><%= key %>:<%= value %></li>
     <% end %>
 </ul>
-
+<p>Total Votes</p>
 <% @ballot.full_vote.each do |vote| %>
     <ul>
         <% vote.approval_vote_model.approval_entry.each do |approval_entry| %>
@@ -26,3 +26,16 @@
         <% end %>
     </ul>
 <% end %>
+
+<h3>Ranked Vote Selection Counts:</h3>
+<p>Coming soon</p>
+<p>Total Ranked Votes</p>
+<div>
+<% @ballot.full_vote.each do |rankedVote| %>
+    <ul>
+    <% rankedVote.ranked_vote_model.ranking.each do |ranking| %>
+        <li><%= ranking.rank %>, <%= ranking.selection.name %></li>
+    <% end %>
+    </ul>
+<% end %>
+</div>

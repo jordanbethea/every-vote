@@ -1,10 +1,10 @@
+<h3><%= @ballot.name %></h3>
 <p>Ballot created by : <%= @ballot.electioneer %></p>
-<p><%= @ballot.name %></p>
 <ol>
     <% @ballot.selection.each do |t| %>
         <li><%= t.name %></li>
     <% end %>
 </ol>
 
-<%= link_to "Vote on this ballot", new_ballot_full_vote_path(@ballot) %>
-<%= link_to "See votes on this ballot", ballot_full_votes_path(@ballot) %>
+<p><%= link_to "Vote on this ballot", new_ballot_full_vote_path(@ballot) %></p>
+<p><%= link_to "See votes on this ballot", ballot_full_votes_path(@ballot) %></p>

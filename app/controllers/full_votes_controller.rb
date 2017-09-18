@@ -4,6 +4,11 @@ class FullVotesController < ApplicationController
         @vote = @ballot.full_vote.build
         @singleVote = @vote.build_single_vote_model
         @approvalVote = @vote.build_approval_vote_model
+        @rankedVote = @vote.build_ranked_vote_model
+        @ballot.selection.each do |selection|
+           @rankedVote.ranking.build(selection: selection)
+        end
+
     end
     
     def create
@@ -21,6 +26,9 @@ class FullVotesController < ApplicationController
                 @approvalVote.approval_entry.build(selection_id: approval) 
             end
         end
+        
+        #ranked vote section
+        @rankedVote = @vote.build_ranked_vote_model(rankedVoteParams)
 
         if(@ballot.save)
             redirect_to action: 'index', ballot_id: @ballot.id
@@ -51,5 +59,9 @@ class FullVotesController < ApplicationController
         
     end
 
+    private
+    def rankedVoteParams
+        params.require(:ranked_vote_model).permit(ranking_attributes: [:rank, :selection_id]); 
+    end
     
 end

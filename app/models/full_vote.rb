@@ -5,4 +5,7 @@ class FullVote < ActiveRecord::Base
   
   has_one :approval_vote_model
   accepts_nested_attributes_for :approval_vote_model
+  
+  has_one :ranked_vote_model
+  accepts_nested_attributes_for :ranked_vote_model
 end

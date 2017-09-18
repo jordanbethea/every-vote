@@ -1,15 +1,6 @@
 <h1>Vote on this ballot:</h1>
 <p>The question: <%= @ballot.name %></p>
 
-<!--
-<%#= form_for(@singleVote) do |singleVote| >
-<ol>
-    <%# @ballot.selection.each do |t| %>
-        <li><%#= label_tag(:singleVoteChoice, t.name) %><%#= radio_button_tag(</li>
-    <%# end %>
-</ol>
-<%# end %>
--->
 <h2>Single Vote Model (First Past the Post)</h2>
 <p>Choose a single favorite selection:</p>
 
@@ -22,6 +13,24 @@
 <p>Choose all selections that you approve of winning</p>    
     <%= fields_for(@approvalVote) do |approvalVote| %>
         <%= collection_check_boxes(:approval_vote_model, :selection_id, @ballot.selection.all, :id, :name) %>
+    <% end %>
+    
+<h2>Ranked Vote Model</h2>
+<p>Please place numbers to indicate your ranking of the following options (1 is favorite, downward to least favorite)</p>
+    <%= fields_for(@rankedVote) do |rankedVote| %>
+        <% rankedVote.fields_for(:ranking) do |ranking| %>
+            <div>
+                <%= ranking.number_field(:rank) %>
+                <%= label(:selection, ranking.object.selection.name) %>
+                <%= ranking.hidden_field(:selection_id) %>
+                <% if false %>
+                <%= ranking.fields_for(:selection) do |selection_fields| %>
+                    <%= selection_fields.label(selection_fields.object.name) %>
+                    <%= selection_fields.hidden_field(:id) %>
+                <% end %>
+                <% end %>
+            </div>
+        <% end %>
     <% end %>
     <%= vote.submit "Cast Vote" %>
 <% end %>

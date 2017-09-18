@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905222051) do
+ActiveRecord::Schema.define(version: 20170913221538) do
 
   create_table "approval_entries", force: :cascade do |t|
     t.integer  "selection_id"
@@ -45,6 +45,24 @@ ActiveRecord::Schema.define(version: 20170905222051) do
   end
 
   add_index "full_votes", ["ballot_id"], name: "index_full_votes_on_ballot_id"
+
+  create_table "ranked_vote_models", force: :cascade do |t|
+    t.integer  "full_vote_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "ranked_vote_models", ["full_vote_id"], name: "index_ranked_vote_models_on_full_vote_id"
+
+  create_table "rankings", force: :cascade do |t|
+    t.integer  "rank"
+    t.integer  "ranked_vote_model_id"
+    t.integer  "selection_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "rankings", ["ranked_vote_model_id"], name: "index_rankings_on_ranked_vote_model_id"
 
   create_table "selections", force: :cascade do |t|
     t.string   "name"
