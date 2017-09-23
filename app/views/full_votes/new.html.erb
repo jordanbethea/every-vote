@@ -23,12 +23,6 @@
                 <%= ranking.number_field(:rank) %>
                 <%= label(:selection, ranking.object.selection.name) %>
                 <%= ranking.hidden_field(:selection_id) %>
-                <% if false %>
-                <%= ranking.fields_for(:selection) do |selection_fields| %>
-                    <%= selection_fields.label(selection_fields.object.name) %>
-                    <%= selection_fields.hidden_field(:id) %>
-                <% end %>
-                <% end %>
             </div>
         <% end %>
     <% end %>
