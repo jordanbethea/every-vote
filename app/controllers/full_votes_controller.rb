@@ -18,7 +18,7 @@ class FullVotesController < ApplicationController
         @approvalVote = @vote.build_approval_vote_model
         
         singleModelParams = params[:single_vote_model]
-        if(singleModelParams != nil)
+        if(singleModelParams != nil) #could be nil if no option selected
             @singleVote.selection_id = params[:single_vote_model][:selection_id]
         end
         
@@ -32,11 +32,8 @@ class FullVotesController < ApplicationController
         
         #ranked vote section
         @rankedVote = @vote.build_ranked_vote_model(rankedVoteParams)
-        #@rankedVote.ranking.each do |ranking|
-        #    if(ranking.rank == nil) 
-        #       ranking.rank = 0 
-        #    end 
-        #end
+        #@rankedVote.normalizeRankings
+        
 
         if(@ballot.save)
             redirect_to action: 'index', ballot_id: @ballot.id
