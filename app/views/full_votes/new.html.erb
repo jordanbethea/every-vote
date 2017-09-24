@@ -1,10 +1,11 @@
 <h1>Vote on this ballot:</h1>
 <p>The question: <%= @ballot.name %></p>
 
+<%= form_for([@ballot, @vote]) do |vote| %>
+    <%= render "shared/vote_error_messages" %>
+
 <h2>Single Vote Model (First Past the Post)</h2>
 <p>Choose a single favorite selection:</p>
-
-<%= form_for([@ballot, @vote]) do |vote| %>
     <%= fields_for(@singleVote) do |singleVote| %>
         <%= collection_radio_buttons(:single_vote_model, :selection_id, @ballot.selection.all, :id, :name) %>
     <% end %>
@@ -17,6 +18,7 @@
     
 <h2>Ranked Vote Model</h2>
 <p>Please place numbers to indicate your ranking of the following options (1 is favorite, downward to least favorite)</p>
+<p class="requirements">You cannot use the same number twice. Entries can be left blank, but may not be valid for all calculation models.</p>
     <%= fields_for(@rankedVote) do |rankedVote| %>
         <% rankedVote.fields_for(:ranking) do |ranking| %>
             <div>
