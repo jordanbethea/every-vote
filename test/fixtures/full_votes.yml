@@ -1,9 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  ballot_id: 
+breakfastVoteOne:
+  name: Jordans Own
+  ballot: breakfast
 
-two:
-  name: MyString
-  ballot_id: 
+breakfastVoteTwo:
+  name: A Mystery Man
+  ballot: breakfast
+  
+breakfastVoteThree:
+  name: Slartibartfast
+  ballot: breakfast
+
+breakfastVoteFour:
+  name: Bender
+  ballot: breakfast
+
+breakfastVoteFive:
+  name: Ruth Bader Ginsburgh
+  ballot: breakfast

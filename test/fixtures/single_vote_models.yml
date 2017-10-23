@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  FullVote_id: 
-  Selection_id: 
+  FullVote: breakfastVoteOne
+  Selection: breakfastOne
 
 two:
-  FullVote_id: 
-  Selection_id: 
+  FullVote: breakfastVoteTwo
+  Selection: breakfastOne
+
+three:
+  FullVote: breakfastVoteThree
+  Selection: breakfastTwo
+
+four:
+  FullVote: breakfastVoteFour
+  Selection: breakfastThree

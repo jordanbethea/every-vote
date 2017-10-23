@@ -46,6 +46,8 @@ class FullVotesController < ApplicationController
         @ballot = Ballot.find(params[:ballot_id])
         @singleCounts = Hash.new(0)
         @approvals = Hash.new(0)
+        @irv = InstantRunoffCalculator.new
+        
                 
         @ballot.full_vote.each do |vote|
            vote.single_vote_model.selection_name = Selection.find(vote.single_vote_model.selection_id).name 
@@ -59,8 +61,9 @@ class FullVotesController < ApplicationController
            end
         end
         
-        
-        
+        #Calculate Instant Runoff results - right now doing it on every load, not great performance
+        @irv.importRankedVotes @ballot
+        @irv.tallyVotes
         
     end
 

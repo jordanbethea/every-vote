@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  ballot_id: 
+breakfastOne:
+  name: Eggs
+  ballot: breakfast 
 
-two:
-  name: MyString
-  ballot_id: 
+breakfastTwo:
+  name: Bacon
+  ballot: breakfast 
+  
+breakfastThree:
+  name: Whiskey
+  ballot: breakfast
+
+breakfastFour:
+  name: Cereal
+  ballot: breakfast

@@ -1,5 +1,6 @@
 <h1>Votes for <%= @ballot.name %></h1>
-<h3>Single Vote Selection Counts:</h3>
+<h3>Single Vote Model</h3>
+<p>Vote Totals:</p>
 <ul>
     <% @singleCounts.each do |key, value| %>
         <li><%= key %>:<%= value %></li>
@@ -12,30 +13,41 @@
     <% end %>
 </ul>
 
-<h3>Approval Vote Selection Counts:</h3>
+<h3>Approval Vote Model</h3>
+<p>Vote Totals:</p>
 <ul>
     <% @approvals.each do |key, value| %>
         <li><%= key %>:<%= value %></li>
     <% end %>
 </ul>
 <p>Total Votes</p>
+<div class="voteContainer">
 <% @ballot.full_vote.each do |vote| %>
-    <ul>
+    <ul class="floatLeft">
         <% vote.approval_vote_model.approval_entry.each do |approval_entry| %>
             <li><%= approval_entry.selection_name %></li>
         <% end %>
     </ul>
 <% end %>
+</div>
 
 <h3>Ranked Vote Selection Counts:</h3>
-<p>Coming soon</p>
+<% @irv.results.each_with_index do |round, count| %>
+    <h4>Round <%= count + 1 %></h4>
+    <div class="voteContainer">
+    <% round.each do |selection, total| %>
+        <div class="irvVoteBox"><p class="selectionText">Selection: <%= selection.name %></p><p class="voteText">Votes: <%= total %></p></div>
+    <% end %>
+    </div>
+<% end %>
+<h4>Winning Selection: <%= @irv.winningSelection.name %></h4>
 <p>Total Ranked Votes</p>
 <div>
 <% @ballot.full_vote.each do |rankedVote| %>
-    <ul>
+    <p>
     <% rankedVote.ranked_vote_model.ranking.each do |ranking| %>
-        <li><%= ranking.rank %>, <%= ranking.selection.name %></li>
+        <%= ranking.rank %>, <%= ranking.selection.name %>
     <% end %>
-    </ul>
+    </p>
 <% end %>
 </div>

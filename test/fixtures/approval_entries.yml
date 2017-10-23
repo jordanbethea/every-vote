@@ -1,9 +1,39 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  selection_id: 1
-  vote_id: 1
+# Approvals:
+# Ballot one - selections 1,2
+# Ballot two - selections 2
+# Ballot 3 - selections 1,2,4
+# Ballot 4 - selections 2,3
 
-two:
-  selection_id: 1
-  vote_id: 1
+ballotOneApprovalOne:
+  Selection: breakfastOne
+  ApprovalVoteModel: ApprovalOne
+
+ballotOneApprovalTwo:
+  Selection: breakfastTwo
+  ApprovalVoteModel: ApprovalOne
+
+ballotTwoApprovalOne:
+  Selection: breakfastTwo
+  ApprovalVoteModel: ApprovalTwo
+
+ballotThreeApprovalOne:
+  Selection: breakfastOne
+  ApprovalVoteModel: ApprovalThree
+
+ballotThreeApprovalTwo:
+  Selection: breakfastTwo
+  ApprovalVoteModel: ApprovalThree
+
+ballotThreeApprovalThree:
+  Selection: breakfastFour
+  ApprovalVoteModel: ApprovalThree
+
+ballotFourApprovalOne:
+  Selection: breakfastThree
+  ApprovalVoteModel: ApprovalFour
+
+ballotFourApprovalTwo:
+  Selection: breakfastTwo
+  ApprovalVoteModel: ApprovalFour
