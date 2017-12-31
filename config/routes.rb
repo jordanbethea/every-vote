@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   get '/createBallot', to: 'ballots#new'
   get 'ballots/new'
-
+  post 'ballots/addSelection'
   root 'application#home'
   
   get 'application/home'

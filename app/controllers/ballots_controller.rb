@@ -8,6 +8,12 @@ class BallotsController < ApplicationController
     
   end
   
+  def addSelection
+    @ballot = Ballot.new(ballot_params)
+    @ballot.selection.build
+    render 'new'
+  end
+  
   def show
     @ballot = Ballot.find(params[:id])
   end
